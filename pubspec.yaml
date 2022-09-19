@@ -22,8 +22,8 @@ dependencies:
   firebase_core: ^1.22.0
   flutter_svg: ^1.1.5
   url_launcher: ^6.1.5
-  open_whatsapp: ^0.0.1
   whatsapp_unilink: ^2.0.2
+  
 
 
 dev_dependencies:
