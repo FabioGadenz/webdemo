@@ -1,6 +1,8 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
+import 'package:open_whatsapp/open_whatsapp.dart';
+import 'package:url_launcher/url_launcher.dart';
+import 'package:whatsapp_unilink/whatsapp_unilink.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -39,9 +41,9 @@ class MyApp extends StatelessWidget {
             print("ERRO");
           }
           if (snapshot.connectionState == ConnectionState.done) {
-            return MyHomePage(title: 'site inicial');
+            return const MyHomePage(title: 'site inicial');
           }
-          return CircularProgressIndicator();
+          return const CircularProgressIndicator();
         },
       ),
     );
@@ -61,15 +63,15 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color.fromARGB(255, 85, 85, 84),
+      backgroundColor: const Color.fromARGB(255, 85, 85, 84),
       /* appBar: AppBar(
         backgroundColor: Color.fromARGB(255, 42, 43, 42),
         title: Text(widget.title),
       ), */
       body: Container(
-        decoration: BoxDecoration(
+        decoration: const BoxDecoration(
           image: DecorationImage(
-            image: AssetImage("images/fundo.jpg"),
+            image: AssetImage("assets/images/fundo.jpg"),
             fit: BoxFit.cover,
           ),
         ),
@@ -80,98 +82,105 @@ class _MyHomePageState extends State<MyHomePage> {
               Container(
                 decoration: const BoxDecoration(
                   image: DecorationImage(
-                    image: AssetImage("images/logo.png"),
+                    image: AssetImage("assets/images/logo.png"),
                     fit: BoxFit.cover,
                   ),
                 ),
                 height: 180,
                 width: 180,
               ),
-              SizedBox(
+              const SizedBox(
                 height: 20,
               ),
               SizedBox(
                 height: 26,
                 width: 130,
                 child: FloatingActionButton.extended(
-                  backgroundColor: Color.fromARGB(255, 73, 73, 73),
+                  backgroundColor: const Color.fromARGB(255, 73, 73, 73),
                   shape: BeveledRectangleBorder(
                       borderRadius: BorderRadius.circular(5)),
-                  onPressed: () {},
-                  label: Text(
-                    'WhatsApp',
+                  onPressed: () {
+                    launchWhatsApp();
+                    // launchUrl();
+                    //FlutterOpenWhatsapp.sendSingleMessage("5551995189329", "Hello");
+                    //FlutterOpenWhatsapp.sendSingleMessage();
+                  },
+                  label: const Text(
+                    'WhatsApp - ok',
                     style: TextStyle(fontSize: 10),
                   ),
                   icon: Image.asset(
-                    "images/whatsapp.png",
+                    "assets/images/whatsapp.png",
                     height: 22,
                     width: 22,
                   ),
                 ),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 15,
               ),
               SizedBox(
                 height: 25,
                 width: 130,
                 child: FloatingActionButton.extended(
-                  backgroundColor: Color.fromARGB(255, 73, 73, 73),
+                  backgroundColor: const Color.fromARGB(255, 73, 73, 73),
                   shape: BeveledRectangleBorder(
                       borderRadius: BorderRadius.circular(5)),
-                  onPressed: () {},
-                  label: Text(
-                    'Instagram',
+                  onPressed: () {
+                    launchInstagram();
+                  },
+                  label: const Text(
+                    'Instagram -ok',
                     style: TextStyle(fontSize: 10),
                   ),
                   icon: Image.asset(
-                    "images/instagram.png",
+                    "assets/images/instagram.png",
                     height: 22,
                     width: 22,
                   ),
                 ),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 15,
               ),
               SizedBox(
                 height: 25,
                 width: 130,
                 child: FloatingActionButton.extended(
-                  backgroundColor: Color.fromARGB(255, 73, 73, 73),
+                  backgroundColor: const Color.fromARGB(255, 73, 73, 73),
                   shape: BeveledRectangleBorder(
                       borderRadius: BorderRadius.circular(5)),
                   onPressed: () {},
-                  label: Text(
+                  label: const Text(
                     'Maps',
                     style: TextStyle(fontSize: 10),
                   ),
                   icon: Image.asset(
-                    "images/maps.png",
+                    "assets/images/maps.png",
                     height: 22,
                     width: 22,
                   ),
                 ),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 15,
               ),
               SizedBox(
                 height: 26,
                 width: 130,
                 child: FloatingActionButton.extended(
-                  backgroundColor: Color.fromARGB(255, 73, 73, 73),
+                  backgroundColor: const Color.fromARGB(255, 73, 73, 73),
                   //shape:
                   //BeveledRectangleBorder(
                   //    borderRadius: BorderRadius.circular(5)),
                   onPressed: () {},
 
-                  label: Text(
+                  label: const Text(
                     'Email',
                     style: TextStyle(fontSize: 10),
                   ),
                   icon: Image.asset(
-                    "/images/email.png",
+                    "assets/images/email.png",
                     height: 22,
                     width: 22,
                   ),
@@ -182,5 +191,20 @@ class _MyHomePageState extends State<MyHomePage> {
         ),
       ),
     );
+  }
+
+  launchWhatsApp() async {
+    final link =  WhatsAppUnilink(
+      phoneNumber: '+55-(51)995189329',
+      text: "oi!",
+    );
+
+    await launch('$link');
+  }
+
+  launchInstagram() async {
+    final link = "https://www.instagram.com/fabiogadenz";
+
+    await launch('$link');
   }
 }
