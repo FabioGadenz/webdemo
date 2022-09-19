@@ -1,7 +1,8 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'package:open_whatsapp/open_whatsapp.dart';
+//import 'package:open_whatsapp/open_whatsapp.dart';
 import 'package:url_launcher/url_launcher.dart';
+import 'package:url_launcher/url_launcher_string.dart';
 import 'package:whatsapp_unilink/whatsapp_unilink.dart';
 
 void main() async {
@@ -102,8 +103,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   onPressed: () {
                     launchWhatsApp();
                     // launchUrl();
-                    //FlutterOpenWhatsapp.sendSingleMessage("5551995189329", "Hello");
-                    //FlutterOpenWhatsapp.sendSingleMessage();
+                    
                   },
                   label: const Text(
                     'WhatsApp - ok',
@@ -150,7 +150,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   backgroundColor: const Color.fromARGB(255, 73, 73, 73),
                   shape: BeveledRectangleBorder(
                       borderRadius: BorderRadius.circular(5)),
-                  onPressed: () {},
+                  onPressed: () {gogleMaps();},
                   label: const Text(
                     ' Google Maps',
                     style: TextStyle(fontSize: 10),
@@ -199,12 +199,20 @@ class _MyHomePageState extends State<MyHomePage> {
       text: "oi!",
     );
 
-    await launch('$link');
+    await launchUrlString('$link');
   }
 
   launchInstagram() async {
-    final link = "https://www.instagram.com/fabiogadenz";
+    final Uri link = Uri.parse("https://www.instagram.com/fabiogadenz");
 
-    await launch('$link');
+    await launchUrl(link);
+  }
+
+  gogleMaps() async{
+   
+      final Uri urlGoogle = Uri.parse('https://www.google.com/maps/dir//R.+Espanha,+84,+Eldorado+do+Sul+-+RS,+92990-000/@-30.0001807,-51.3496636,13z/data=!3m1!4b1!4m9!4m8!1m0!1m5!1m1!1s0x95197daf9c192779:0x34b15d7ef31f5043!2m2!1d-51.3146441!2d-30.0001853!3e0');
+      await launchUrl(urlGoogle);
+    
+
   }
 }
