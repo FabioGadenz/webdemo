@@ -152,7 +152,7 @@ class _MyHomePageState extends State<MyHomePage> {
                       borderRadius: BorderRadius.circular(5)),
                   onPressed: () {},
                   label: const Text(
-                    'Maps',
+                    ' Google Maps',
                     style: TextStyle(fontSize: 10),
                   ),
                   icon: Image.asset(
