@@ -87,26 +87,22 @@ class _MyHomePageState extends State<MyHomePage> {
                     fit: BoxFit.cover,
                   ),
                 ),
-                height: 180,
-                width: 180,
+                height: 150,
+                width: 150,
               ),
               const SizedBox(
-                height: 20,
+                height: 30,
               ),
               SizedBox(
                 height: 26,
                 width: 130,
                 child: FloatingActionButton.extended(
                   backgroundColor: const Color.fromARGB(255, 73, 73, 73),
-                  shape: BeveledRectangleBorder(
-                      borderRadius: BorderRadius.circular(5)),
                   onPressed: () {
                     launchWhatsApp();
-                    // launchUrl();
-                    
                   },
                   label: const Text(
-                    'WhatsApp - ok',
+                    'WhatsApp',
                     style: TextStyle(fontSize: 10),
                   ),
                   icon: Image.asset(
@@ -124,13 +120,11 @@ class _MyHomePageState extends State<MyHomePage> {
                 width: 130,
                 child: FloatingActionButton.extended(
                   backgroundColor: const Color.fromARGB(255, 73, 73, 73),
-                  shape: BeveledRectangleBorder(
-                      borderRadius: BorderRadius.circular(5)),
                   onPressed: () {
                     launchInstagram();
                   },
                   label: const Text(
-                    'Instagram -ok',
+                    'Instagram',
                     style: TextStyle(fontSize: 10),
                   ),
                   icon: Image.asset(
@@ -148,9 +142,9 @@ class _MyHomePageState extends State<MyHomePage> {
                 width: 130,
                 child: FloatingActionButton.extended(
                   backgroundColor: const Color.fromARGB(255, 73, 73, 73),
-                  shape: BeveledRectangleBorder(
-                      borderRadius: BorderRadius.circular(5)),
-                  onPressed: () {gogleMaps();},
+                  onPressed: () {
+                    googleMaps();
+                  },
                   label: const Text(
                     ' Google Maps',
                     style: TextStyle(fontSize: 10),
@@ -170,22 +164,25 @@ class _MyHomePageState extends State<MyHomePage> {
                 width: 130,
                 child: FloatingActionButton.extended(
                   backgroundColor: const Color.fromARGB(255, 73, 73, 73),
-                  //shape:
-                  //BeveledRectangleBorder(
-                  //    borderRadius: BorderRadius.circular(5)),
-                  onPressed: () {},
-
+                  onPressed: () {
+                    callPhone();
+                  },
                   label: const Text(
-                    'Email',
+                    'Telefone',
                     style: TextStyle(fontSize: 10),
                   ),
                   icon: Image.asset(
-                    "assets/images/email.png",
+                    "assets/images/phone.png",
                     height: 22,
                     width: 22,
                   ),
                 ),
+                
               ),
+              const SizedBox(
+                height: 40,
+              ),
+              Text(" Desenvolvedor Fábio Gadenz, para contato acesse as opções acima", style: TextStyle(color: Color.fromARGB(255, 179, 167, 2),fontSize: 10),)
             ],
           ),
         ),
@@ -194,7 +191,7 @@ class _MyHomePageState extends State<MyHomePage> {
   }
 
   launchWhatsApp() async {
-    final link =  WhatsAppUnilink(
+    final link = WhatsAppUnilink(
       phoneNumber: '+55-(51)995189329',
       text: "oi!",
     );
@@ -208,11 +205,15 @@ class _MyHomePageState extends State<MyHomePage> {
     await launchUrl(link);
   }
 
-  gogleMaps() async{
-   
-      final Uri urlGoogle = Uri.parse('https://www.google.com/maps/dir//R.+Espanha,+84,+Eldorado+do+Sul+-+RS,+92990-000/@-30.0001807,-51.3496636,13z/data=!3m1!4b1!4m9!4m8!1m0!1m5!1m1!1s0x95197daf9c192779:0x34b15d7ef31f5043!2m2!1d-51.3146441!2d-30.0001853!3e0');
-      await launchUrl(urlGoogle);
-    
+  googleMaps() async {
+    final Uri urlGoogle = Uri.parse(
+        'https://www.google.com/maps/dir//R.+Espanha,+84,+Eldorado+do+Sul+-+RS,+92990-000/@-30.0001807,-51.3496636,13z/data=!3m1!4b1!4m9!4m8!1m0!1m5!1m1!1s0x95197daf9c192779:0x34b15d7ef31f5043!2m2!1d-51.3146441!2d-30.0001853!3e0');
+    await launchUrl(urlGoogle);
+  }
 
+  callPhone() async {
+    //final Uri phone = Uri(scheme: 'tel', path: '+5551995189329');
+    var phone = Uri.parse("tel:+5551995189329");
+    await launchUrl(phone);
   }
 }
