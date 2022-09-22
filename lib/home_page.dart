@@ -55,7 +55,7 @@ class HomePage extends StatelessWidget {
                   name: 'Google Maps',
                   linkIcon: "assets/images/maps.png",
                   data:
-                      'https://www.google.com/maps/dir//R.+Espanha,+84,+Eldorado+do+Sul+-+RS,+92990-000/@-30.0001807,-51.3496636,13z/data=!3m1!4b1!4m9!4m8!1m0!1m5!1m1!1s0x95197daf9c192779:0x34b15d7ef31f5043!2m2!1d-51.3146441!2d-30.0001853!3e0'),
+                      'https://www.google.com.br/maps/place/Usina+do+Gas%C3%B4metro/@-30.0390277,-51.2460958,15.25z/data=!4m5!3m4!1s0x95197917c11ee4fd:0xc4d07b56891fa52d!8m2!3d-30.0341857!4d-51.2411077'),
               const SizedBox(
                 height: 15,
               ),
